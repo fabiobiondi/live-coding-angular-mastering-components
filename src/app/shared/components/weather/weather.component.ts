@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { HttpClient } from '@angular/common/http';
 import { Meteo } from './weather';
 
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const options = 'units=metric';
 const token = 'eb03b1f5e5afb5f4a4edb40c1ef2f534';
 
