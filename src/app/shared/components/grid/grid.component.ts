@@ -15,9 +15,10 @@ export class GridComponent implements AfterContentInit {
       // item.classList.add('col');
       this.renderer.addClass(item, 'col');
     }
-    /*
+
     // display an expeption if grid has no children
     // NOTE: this check does not work when children content is async
+    /*
     if (el.children.length === 0) {
       throw new Error('<grid> component cannot have ZERO elements');
     }
