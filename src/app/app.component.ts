@@ -9,10 +9,13 @@ import { AccordionGroupComponent } from './shared/components/accordion/accordion
     <div class="fixed-top">
         <fb-card>
           <fb-tab-bar
-            icon="fa fa-window-restore fa-2x"
+            mainIcon="fa fa-window-restore fa-2x"
+            actionIcon="fa fa-external-link"
             [active]="country"
             [items]="countries"
-            (tabSelect)="selectTab($event)"></fb-tab-bar>
+            (tabSelect)="selectTab($event)"
+            (iconSelect)="gotoWikipedia($event)"
+          ></fb-tab-bar>
         </fb-card>
     </div>
 
@@ -76,6 +79,10 @@ export class AppComponent {
   selectTab(c) {
     this.country = c;
     this.chartData = add(c.temp);
+  }
+
+  gotoWikipedia(c) {
+    window.open(`https://it.wikipedia.org/wiki/${c.label}`);
   }
 
   loadDashboard() {
