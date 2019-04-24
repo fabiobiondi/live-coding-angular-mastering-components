@@ -11,15 +11,15 @@ A long session of live coding with following topics to explain topics and show s
 * Integration with HTML Canvas
 * Create components at runtime
 
-### Demos
+### Components ([demo](https://fabiobiondi.github.io/live-coding-angular-mastering-components/))
 
 * Card Component
 * TabBar Component
-* Grid Component
+* Accordion Component
+* Grid Layout Component
 * Chart Component (with Chart.js)
 * Google Map Component (with static API)
 * Google Map Component (with Google Map API)
-* Accordion Component
 * Weather Component
 * Loader directive
 
