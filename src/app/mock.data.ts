@@ -7,7 +7,7 @@ import { WeatherComponent } from './shared/components/weather/weather.component'
 export const COUNTRIES = [
   { id: 1001, label: 'Trieste', lat: 45.6, lng: 13.77, temp: [12, 19, 3, 5, 2, 3]},
   { id: 1002, label: 'Paris', lat: 48.8, lng: 2.35, temp: [12, 19, 3, 35, 2, 3]},
-  { id: 1003, label: 'New York', lat: 40, lng: 73, temp: [12, 19, 23, 25, 12, 3]}
+  { id: 1003, label: 'New York', lat: 40, lng: -74, temp: [12, 19, 23, 25, 12, 3]}
 ];
 
 export let CHART_DATA: ChartConfiguration = {
