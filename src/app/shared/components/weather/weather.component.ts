@@ -9,7 +9,7 @@ const token = 'eb03b1f5e5afb5f4a4edb40c1ef2f534';
 @Component({
   selector: 'fb-weather',
   template: `
-    <img *ngIf="data" [src]="'http://openweathermap.org/img/w/' + data?.weather[0].icon + '.png'">
+    <img *ngIf="data" [src]="'https://openweathermap.org/img/w/' + data?.weather[0].icon + '.png'">
     {{data?.weather[0].description}} - {{data?.main.temp}}°
   `
 })
@@ -27,7 +27,7 @@ export class WeatherComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const { city } = changes;
-    console.log(city)
+    console.log(city);
     this.fetchMeteo(city.currentValue);
   }
 
