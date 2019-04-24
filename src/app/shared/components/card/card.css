@@ -1,0 +1,18 @@
+.card {
+  margin: 10px;
+  background: #FFF;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  color: #272727;
+  border-radius: 2px;
+}
+
+.card .content {
+  padding: 20px;
+  font-weight: 300;
+}
+
+.card .title {
+  line-height: 48px;
+  font-size: 24px;
+  font-weight: 300;
+}

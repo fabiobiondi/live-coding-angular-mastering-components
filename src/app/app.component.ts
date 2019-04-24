@@ -1,31 +1,84 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren } from '@angular/core';
+import { add, CHART_DATA, COUNTRIES, DASHBOARD } from './mock.data';
+import { CardComponent } from './shared/components/card/card.component';
+import { AccordionGroupComponent } from './shared/components/accordion/accordion-group.component';
 
 @Component({
   selector: 'fb-root',
   template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    <div class="fixed-top">
+        <fb-card>
+          <fb-tab-bar
+            icon="fa fa-window-restore fa-2x"
+            [active]="country"
+            [items]="countries"
+            (tabSelect)="selectTab($event)"></fb-tab-bar>
+        </fb-card>
     </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
-    
+
+    <div class="container" style="margin-top: 75px">
+      <fb-grid>
+        <fb-card title="Static Map & Weather Components">
+          <fb-static-gmap [lat]="country.lat" [lng]="country.lng" [zoom]="zoom" w="300" h="100"></fb-static-gmap>
+          <div>
+            <i class="fa fa-plus-circle fa-2x mr-2" (click)="zoom = zoom + 1"></i>
+            <i class="fa fa-minus-circle fa-2x" (click)="zoom = zoom - 1"></i>
+            <div class="pull-right">
+              <fb-weather [city]="country.label"></fb-weather>
+            </div>
+          </div>
+        </fb-card>
+        <fb-card [title]="'Chart.JS: ' + country.label">
+          <fb-chartjs [config]="chartData"></fb-chartjs>
+        </fb-card>
+      </fb-grid>
+
+      <fb-grid>
+        <fb-card title="Google Map API">
+          <fb-gmap [lat]="country.lat" [lng]="country.lng" [zoom]="zoom"></fb-gmap>
+        </fb-card>
+        <fb-card title="Accordion">
+          <fb-accordion>
+            <fb-group
+              *ngFor="let c of countries"
+              [title]="c.label"
+            >
+              <fb-gmap [lat]="c.lat" [lng]="c.lng"></fb-gmap>
+            </fb-group>
+          </fb-accordion>
+        </fb-card>
+      </fb-grid>
+
+      <h3 class="text-center">
+        Dynamic Components
+        <button
+          *ngIf="!dashboard"
+          class="btn btn-outline-dark"
+          (click)="loadDashboard()">LOAD</button>
+      </h3>
+      <fb-grid>
+        <fb-card *ngFor="let widget of dashboard">
+          <ng-container [fbLoader]="widget"></ng-container>
+        </fb-card>
+      </fb-grid>
+    </div>
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'mastering-components-demo';
+  chartData = CHART_DATA;
+  dashboard;
+  zoom = 5;
+
+  countries = COUNTRIES;
+  country = this.countries[0];
+
+  selectTab(c) {
+    this.country = c;
+    this.chartData = add(c.temp);
+  }
+
+  loadDashboard() {
+    this.dashboard = DASHBOARD;
+  }
 }
