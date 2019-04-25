@@ -31,7 +31,6 @@ export class TabBarComponent<T> {
   }
 
   iconActionHandler(event: MouseEvent, tab: T) {
-    console.log(tab.id)
     event.stopPropagation();
     this.iconSelect.emit(tab);
   }
