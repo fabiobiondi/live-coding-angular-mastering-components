@@ -1,6 +1,6 @@
 # Live Coding: Mastering Angular
 
-A long session of live coding with following topics to explain topics and show several techniques to create custom reusable components:
+A long session of live coding to explain several topics and techniques to create custom reusable components:
 
 * Input, Output and Content Projection
 * Composite components
