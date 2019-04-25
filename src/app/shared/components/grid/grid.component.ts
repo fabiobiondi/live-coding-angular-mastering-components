@@ -1,11 +1,11 @@
-import { Component, ViewChild, ViewEncapsulation, AfterContentInit, Renderer2 } from '@angular/core';
+import { Component, ViewChild, AfterContentInit, Renderer2, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'fb-grid',
   template: '<div #host class="row"><ng-content></ng-content></div>',
 })
 export class GridComponent implements AfterContentInit {
-  @ViewChild('host') host;
+  @ViewChild('host') host: ElementRef;
 
   constructor(private renderer: Renderer2) {}
 
