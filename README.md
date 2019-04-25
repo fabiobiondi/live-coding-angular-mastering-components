@@ -6,10 +6,13 @@ A long session of live coding with following topics to explain topics and show s
 * Composite components
 * Component lifecycle
 * `@ViewChildren` vs `@ContentChildren`
-* 3rd party integration and types
+* 3rd party integration
 * Create custom errors
 * Integration with HTML Canvas
 * Create components at runtime
+* Angular Animations
+* Types and Generics
+* Custom CSS vs Bootstrap
 
 ### Components ([demo](https://fabiobiondi.github.io/live-coding-angular-mastering-components/))
 
