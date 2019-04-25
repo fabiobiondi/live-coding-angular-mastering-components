@@ -10,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
       <li class="nav-item"
           *ngFor="let tab of items"
-          (click)="select(tab)">
+          (click)="tabClickHandler(tab)">
         <a class="nav-link" [ngClass]="{'active': tab.id === active?.id}">
           {{tab.label}} <i [class]="actionIcon" (click)="iconActionHandler($event, tab)"></i>
         </a>
@@ -18,19 +18,20 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     </ul>
   `,
 })
-export class TabBarComponent {
-  @Input() items;
-  @Input() active;
+export class TabBarComponent<T extends { id: number } > {
+  @Input() items: T;
+  @Input() active: T;
   @Input() mainIcon: string;
   @Input() actionIcon: string;
-  @Output() tabSelect: EventEmitter<any> = new EventEmitter();
-  @Output() iconSelect: EventEmitter<any> = new EventEmitter();
+  @Output() tabClick: EventEmitter<T> = new EventEmitter();
+  @Output() iconSelect: EventEmitter<T> = new EventEmitter();
 
-  select(tab) {
-    this.tabSelect.emit(tab);
+  tabClickHandler(tab: T) {
+    this.tabClick.emit(tab);
   }
 
-  iconActionHandler(event: MouseEvent, tab: any) {
+  iconActionHandler(event: MouseEvent, tab: T) {
+    console.log(tab.id)
     event.stopPropagation();
     this.iconSelect.emit(tab);
   }

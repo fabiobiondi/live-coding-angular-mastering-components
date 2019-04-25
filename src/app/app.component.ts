@@ -1,5 +1,5 @@
 import { Component, ViewChildren } from '@angular/core';
-import { add, CHART_DATA, COUNTRIES, DASHBOARD } from './mock.data';
+import { add, CHART_DATA, COUNTRIES, Country, DashboardWidget, DASHBOARD } from './mock.data';
 import { CardComponent } from './shared/components/card/card.component';
 import { AccordionGroupComponent } from './shared/components/accordion/accordion-group.component';
 
@@ -13,7 +13,7 @@ import { AccordionGroupComponent } from './shared/components/accordion/accordion
             actionIcon="fa fa-external-link"
             [active]="country"
             [items]="countries"
-            (tabSelect)="selectTab($event)"
+            (tabClick)="selectTab($event)"
             (iconSelect)="gotoWikipedia($event)"
           ></fb-tab-bar>
         </fb-card>
@@ -70,18 +70,18 @@ import { AccordionGroupComponent } from './shared/components/accordion/accordion
 })
 export class AppComponent {
   chartData = CHART_DATA;
-  dashboard;
+  dashboard: DashboardWidget[];
   zoom = 5;
 
-  countries = COUNTRIES;
-  country = this.countries[0];
+  countries: Country[] = COUNTRIES;
+  country: Country = this.countries[0];
 
-  selectTab(c) {
+  selectTab(c: Country) {
     this.country = c;
     this.chartData = add(c.temp);
   }
 
-  gotoWikipedia(c) {
+  gotoWikipedia(c: Country) {
     window.open(`https://it.wikipedia.org/wiki/${c.label}`);
   }
 
@@ -89,3 +89,4 @@ export class AppComponent {
     this.dashboard = DASHBOARD;
   }
 }
+
