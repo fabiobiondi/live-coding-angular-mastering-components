@@ -34,7 +34,6 @@ export class WeatherComponent implements OnInit, OnChanges {
     this.http.get<Meteo>(`${baseURL}${text}&${options}&APPID=${token}`)
       .subscribe(res => {
         this.data = res;
-        console.log(res.coord);
       });
   }
 }
