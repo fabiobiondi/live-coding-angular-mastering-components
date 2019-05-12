@@ -1,6 +1,6 @@
 import {
-  Directive, ElementRef, ViewContainerRef, Input,
-  ComponentFactoryResolver, ComponentRef, OnDestroy, ChangeDetectorRef,
+  Directive, ViewContainerRef, Input,
+  ComponentFactoryResolver, ComponentRef, OnDestroy,
 } from '@angular/core';
 
 @Directive({
@@ -10,7 +10,6 @@ export class LoaderDirective implements OnDestroy {
   constructor(
     private view: ViewContainerRef,
     private resolver: ComponentFactoryResolver,
-    private cd: ChangeDetectorRef
   ) { }
 
   private ref: ComponentRef<any>;
