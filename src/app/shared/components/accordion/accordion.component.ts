@@ -8,7 +8,6 @@ import { AccordionGroupComponent } from './accordion-group.component';
       <ng-content></ng-content>
     </div>
 `,
-  styleUrls: ['accordion.css']
 })
 export class AccordionComponent  implements AfterContentInit {
   @ContentChildren(AccordionGroupComponent) groups: QueryList<AccordionGroupComponent>;
