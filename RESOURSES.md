@@ -1,4 +1,4 @@
-# Resourses
+# RESOURSES
 
 ### STATIC MAP API
 
