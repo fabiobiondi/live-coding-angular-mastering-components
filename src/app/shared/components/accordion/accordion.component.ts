@@ -1,4 +1,4 @@
-import { Component, ContentChildren, QueryList, AfterContentInit, ChangeDetectorRef, ApplicationRef, Input } from '@angular/core';
+import { Component, ContentChildren, QueryList, AfterContentInit, DoCheck } from '@angular/core';
 import { AccordionGroupComponent } from './accordion-group.component';
 
 @Component({
@@ -9,8 +9,9 @@ import { AccordionGroupComponent } from './accordion-group.component';
     </div>
 `,
 })
-export class AccordionComponent  implements AfterContentInit {
+export class AccordionComponent  implements AfterContentInit, DoCheck {
   @ContentChildren(AccordionGroupComponent) groups: QueryList<AccordionGroupComponent>;
+  prevGroups: QueryList<AccordionGroupComponent>;
 
   ngAfterContentInit() {
     this.groups.toArray().forEach((g) => {
@@ -18,7 +19,16 @@ export class AccordionComponent  implements AfterContentInit {
         this.openGroup(g);
       });
     });
+    // open the first panel but it generates an error: ExpressionChangedAfterItHasBeenCheckedError
+    // so we use ngDoCheck below
     // this.groups.toArray()[0].opened = true;
+  }
+
+  ngDoCheck() {
+    if (this.prevGroups !== this.groups) {
+      this.prevGroups = this.groups;
+      this.groups.toArray()[0].opened = true;
+    }
   }
 
   openGroup(group: AccordionGroupComponent) {
