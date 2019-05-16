@@ -11,6 +11,7 @@ import { AccordionGroupComponent } from './shared/components/accordion/accordion
           <fb-tab-bar
             mainIcon="fa fa-window-restore fa-2x"
             actionIcon="fa fa-external-link"
+            fieldName="label"
             [active]="country"
             [items]="countries"
             (tabClick)="selectTab($event)"

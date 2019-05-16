@@ -12,17 +12,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
           *ngFor="let tab of items"
           (click)="tabClickHandler(tab)">
         <a class="nav-link" [ngClass]="{'active': tab.id === active?.id}">
-          {{tab.label}} <i [class]="actionIcon" (click)="iconActionHandler($event, tab)"></i>
+          {{tab[fieldName]}} <i [class]="actionIcon" (click)="iconActionHandler($event, tab)"></i>
         </a>
       </li>
     </ul>
   `,
 })
-export class TabBarComponent<T> {
-  @Input() items: T;
+export class TabBarComponent<T extends { label: string }> {
+  @Input() items: T[];
   @Input() active: T;
   @Input() mainIcon: string;
   @Input() actionIcon: string;
+  @Input() fieldName = 'label';
   @Output() tabClick: EventEmitter<T> = new EventEmitter();
   @Output() iconSelect: EventEmitter<T> = new EventEmitter();
 
