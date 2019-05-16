@@ -19,7 +19,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   `,
 })
 export class TabBarComponent<T extends { label: string }> {
-  @Input() items: T[];
+  @Input() items: Array<T>;
   @Input() active: T;
   @Input() mainIcon: string;
   @Input() actionIcon: string;
