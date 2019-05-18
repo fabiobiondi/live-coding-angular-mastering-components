@@ -1,6 +1,6 @@
 import { Component, ViewChild, Input, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
-import * as Chart from 'chart.js';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'fb-chartjs',
