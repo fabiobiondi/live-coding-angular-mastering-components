@@ -1,23 +1,15 @@
-import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { ChartConfiguration } from 'chart.js';
 import { CardComponent } from './shared/components/card/card.component';
 import { StaticGmapComponent } from './shared/components/static-gmap/static-gmap.component';
 import { TabBarComponent } from './shared/components/tabbar/tabbar.component';
 import { WeatherComponent } from './shared/components/weather/weather.component';
-import { Type } from '@angular/core';
+import { DashboardWidget } from './model/dashboard-widget';
 
 export const COUNTRIES = [
   { id: 1001, label: 'Trieste', lat: 45.6, lng: 13.77, temp: [12, 19, 3, 5, 2, 3]},
   { id: 1002, label: 'Paris', lat: 48.8, lng: 2.35, temp: [12, 19, 3, 35, 2, 3]},
   { id: 1003, label: 'New York', lat: 40, lng: -74, temp: [12, 19, 23, 25, 12, 3]}
 ];
-
-export class Country {
-  id: number;
-  label: string;
-  lat: number;
-  lng: number;
-  temp: Array<number>;
-}
 
 export let CHART_DATA: ChartConfiguration = {
   type: 'bar',
@@ -52,11 +44,6 @@ export function add(data) {
 /**
  * LIST OF DYNAMIC COMPONENTS
  */
-
-export interface DashboardWidget {
-  type: Type<any>;
-  data: {[key: string]: any};
-}
 
 export const DASHBOARD: DashboardWidget[] = [
   {

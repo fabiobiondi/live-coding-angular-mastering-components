@@ -1,7 +1,7 @@
-import { Component, ViewChildren } from '@angular/core';
-import { add, CHART_DATA, COUNTRIES, Country, DashboardWidget, DASHBOARD } from './mock.data';
-import { CardComponent } from './shared/components/card/card.component';
-import { AccordionGroupComponent } from './shared/components/accordion/accordion-group.component';
+import { Component } from '@angular/core';
+import { add, CHART_DATA, COUNTRIES, DASHBOARD } from './mock.data';
+import { Country } from './model/country';
+import { DashboardWidget } from './model/dashboard-widget';
 
 @Component({
   selector: 'fb-root',

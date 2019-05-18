@@ -2,6 +2,7 @@ import {
   Directive, ViewContainerRef, Input,
   ComponentFactoryResolver, ComponentRef, OnDestroy,
 } from '@angular/core';
+import { DashboardWidget } from '../../../model/dashboard-widget';
 
 @Directive({
   selector: '[fbLoader]',
@@ -14,14 +15,14 @@ export class LoaderDirective implements OnDestroy {
 
   private ref: ComponentRef<any>;
 
-  @Input() set fbLoader(component) {
+  @Input() set fbLoader(config: DashboardWidget) {
     this.view.clear();
-    if (component) {
-      const factory = this.resolver.resolveComponentFactory(component.type);
+    if (config) {
+      const factory = this.resolver.resolveComponentFactory(config.type);
       this.ref = this.view.createComponent(factory);
-      for (const key in component.data) {
+      for (const key in config.data) {
         if (key) {
-          this.ref.instance[key] = component.data[key];
+          this.ref.instance[key] = config.data[key];
         }
       }
     }
