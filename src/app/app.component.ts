@@ -47,7 +47,7 @@ import { AccordionGroupComponent } from './shared/components/accordion/accordion
               *ngFor="let c of countries"
               [title]="c.label"
             >
-              <fb-gmap [lat]="c.lat" [lng]="c.lng"></fb-gmap>
+              <fb-gmap [lat]="c.lat" [lng]="c.lng" [zoom]="zoom"></fb-gmap>
             </fb-group>
           </fb-accordion>
         </fb-card>
@@ -72,7 +72,7 @@ import { AccordionGroupComponent } from './shared/components/accordion/accordion
 export class AppComponent {
   chartData = CHART_DATA;
   dashboard: DashboardWidget[];
-  zoom = 5;
+  zoom = 10;
 
   countries: Country[] = COUNTRIES;
   country: Country = this.countries[0];

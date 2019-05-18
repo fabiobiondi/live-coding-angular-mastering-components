@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, SimpleChanges, OnChanges, OnInit } from '@angular/core';
+import { Component, ViewChild, Input, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'fb-gmap',
@@ -10,42 +10,36 @@ import { Component, ViewChild, Input, SimpleChanges, OnChanges, OnInit } from '@
 })
 export class GMapComponent implements OnChanges {
   @ViewChild('host') host;
-  @Input() lat = 44; // default
-  @Input() lng = 13; // default
-  @Input() zoom = 4; // default
-  @Input() height = 150; // default
+  @Input() lat;
+  @Input() lng;
+  @Input() zoom;
+  @Input() height = 150;
 
-  /**
-   * Google Map instance
-   */
   map: google.maps.Map;
 
-  constructor() {}
-
-
   init() {
-    const opts = {
-      zoom: this.zoom || 3,
-    };
-
+    console.log(this.zoom)
+    const opts = { zoom: this.zoom || 8};
     this.map = new google.maps.Map(this.host.nativeElement, opts);
-    this.map.setCenter(new google.maps.LatLng(this.lat, this.lng));
   }
 
   ngOnChanges(changes: SimpleChanges) {
     const { lat, lng, zoom }  = changes;
-    if (lat && lat.isFirstChange() || lng && lng.isFirstChange()) {
+    if (
+      (lat && lat.isFirstChange()) &&
+      (lng && lng.isFirstChange())
+    ) {
       this.init();
     }
-    this.render(lat, lng, zoom);
+    this.update(lat, lng, zoom);
   }
 
-  render(lat, lng, zoom) {
+  update(lat, lng, zoom) {
     if (lat && lng && lat.currentValue && lng.currentValue) {
       this.map.setCenter(new google.maps.LatLng(lat.currentValue, lng.currentValue));
     }
 
-    if (zoom) {
+    if (zoom && zoom.currentValue) {
       this.map.setZoom(zoom.currentValue);
     }
   }
