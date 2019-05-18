@@ -4,10 +4,8 @@ import { AccordionGroupComponent } from './accordion-group.component';
 @Component({
   selector: 'fb-accordion',
   template: `
-    <div>
-      <ng-content></ng-content>
-    </div>
-`,
+    <ng-content></ng-content>
+  `,
 })
 export class AccordionComponent  implements AfterContentInit, DoCheck {
   @ContentChildren(AccordionGroupComponent) groups: QueryList<AccordionGroupComponent>;
