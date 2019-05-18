@@ -24,7 +24,7 @@ export class StaticGmapComponent implements OnInit, OnChanges {
     this.setURL();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     this.setURL();
   }
 
