@@ -18,7 +18,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ])
   ],
   template: `
-  <div class="mypanel">
+  <div class="accordion-group">
     <div class="title" (click)="toggle.emit()">
       <i class="fa" [ngClass]="{
         'fa-arrow-down': opened,
