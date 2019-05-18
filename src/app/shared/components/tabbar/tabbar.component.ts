@@ -18,7 +18,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     </ul>
   `,
 })
-export class TabBarComponent<T extends { label: string }> {
+export class TabBarComponent<T> {
   @Input() items: Array<T>;
   @Input() active: T;
   @Input() mainIcon: string;
