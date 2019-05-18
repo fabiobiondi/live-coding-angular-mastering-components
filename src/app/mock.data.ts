@@ -37,6 +37,7 @@ export let CHART_DATA: ChartConfiguration = {
     }]
   },
   options: {
+    responsive: true,
     legend:  null,
   }
 };
@@ -82,7 +83,7 @@ export const DASHBOARD: DashboardWidget[] = [
     type: TabBarComponent,
     data: {
       items: [ { id: 1001, label: 'One'}, { id: 1002, label: 'Two'}],
-      active: { id: 1001, label: 'One'}
+      active: { id: 1002, label: 'Two'}
     }
   }
 ];
