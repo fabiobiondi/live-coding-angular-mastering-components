@@ -18,7 +18,6 @@ export class GMapComponent implements OnChanges {
   map: google.maps.Map;
 
   init() {
-    console.log(this.zoom)
     const opts = { zoom: this.zoom || 8};
     this.map = new google.maps.Map(this.host.nativeElement, opts);
   }
